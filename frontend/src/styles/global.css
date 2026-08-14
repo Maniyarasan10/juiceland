@@ -1,0 +1,240 @@
+:root {
+  --ink: #17130d;
+  --ink-2: #241e14;
+  --ink-soft: #4a4133;
+  --muted: #73694f;
+  --muted-2: #9b9278;
+  --cream: #fbf7ee;
+  --cream-2: #f4edda;
+  --card: #ffffff;
+  --line: #eae1cc;
+  --line-2: #efe8d8;
+  --green: #2e9e4f;
+  --green-2: #3db865;
+  --green-soft: #e6f4ea;
+  --yellow: #ffc400;
+  --yellow-2: #ffd23f;
+  --yellow-soft: #fff3c2;
+  --orange: #ff7a1a;
+  --red: #e02e2e;
+  --radius: 18px;
+  --radius-lg: 24px;
+  --header-h: 88px;
+  --search-h: 58px;
+  --nav-h: 58px;
+  --sticky-h: calc(var(--header-h) + var(--search-h) + var(--nav-h));
+  --shadow-sm:
+    0 1px 2px rgba(23, 19, 13, 0.05), 0 4px 14px rgba(23, 19, 13, 0.06);
+  --shadow-md:
+    0 8px 20px rgba(23, 19, 13, 0.1), 0 24px 60px rgba(23, 19, 13, 0.12);
+  --font:
+    'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --maxw: 1160px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--sticky-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+::selection {
+  background: rgba(255, 196, 0, 0.4);
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+/* ---------- veg / non-veg indicator ---------- */
+
+.vegbadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border-radius: 5px;
+  padding: 1px;
+  flex: none;
+}
+
+.vegbadge--small {
+  width: 17px;
+  height: 17px;
+  border: 1.6px solid;
+}
+
+.vegbadge--tiny {
+  width: 13px;
+  height: 13px;
+  border: 1.3px solid;
+}
+
+.vegbadge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.vegbadge--tiny .vegbadge__dot {
+  width: 5px;
+  height: 5px;
+}
+
+.vegbadge--veg {
+  border-color: var(--green);
+}
+
+.vegbadge--veg .vegbadge__dot {
+  background: var(--green);
+}
+
+.vegbadge--nonveg {
+  border-color: var(--red);
+}
+
+.vegbadge--nonveg .vegbadge__dot {
+  background: var(--red);
+}
+
+/* ---------- entrance animations ---------- */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
