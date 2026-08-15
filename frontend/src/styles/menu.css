@@ -30,7 +30,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 14px;
+  padding: 7px 14px;
   border-radius: 999px;
   border: 1.5px solid var(--line);
   background: var(--card);
@@ -48,26 +48,20 @@
 }
 
 .catnav__pill--active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(23, 19, 13, 0.28);
-}
-
-.catnav__pill--active::after {
-  content: '';
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 3px;
-  height: 3px;
-  border-radius: 3px;
   background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 6px 16px rgba(23, 19, 13, 0.22);
 }
 
-.catnav__emoji {
-  font-size: 14px;
-  line-height: 1;
+.catnav__img {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- menu sections ---------- */
@@ -523,6 +517,15 @@
 
 .filterbar__chip svg {
   flex: none;
+}
+
+.filterbar__chip-img {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: 720px) {

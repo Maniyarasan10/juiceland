@@ -10,7 +10,7 @@ import mintImg from '../assets/products/mint.webp'
 import mosambiImg from '../assets/products/mosambi.webp'
 import paneerMaggiImg from '../assets/products/panner maagi.webp'
 import plainMaggiImg from '../assets/products/plain maagi.webp'
-import pomegranateImg from '../assets/products/pomogranate.jpg'
+import pomegranateImg from '../assets/products/pomogranate.webp'
 import popcornImg from '../assets/products/pop.webp'
 import tenderCoconutImg from '../assets/products/tender coconut.webp'
 import vegBurgerImg from '../assets/products/veg burger.webp'
@@ -26,7 +26,7 @@ import avocadoImg from '../assets/avocado.webp'
 import badamMilkImg from '../assets/badam milk.webp'
 import badamMilkshakeImg from '../assets/badam milkshake.webp'
 import blueberryMojitoImg from '../assets/blueberry mojito.webp'
-import cheeseMaggiImg from '../assets/cheese_maggi_01.png'
+import cheeseMaggiImg from '../assets/cheese_maggi_01.webp'
 import chickenBurgerImg from '../assets/chicken burger.webp'
 import chickenNuggetsImg from '../assets/chicken nuggets.webp'
 import coldCoffeeImg from '../assets/cold coffee.webp'
@@ -87,19 +87,19 @@ import specialBreadOmeletteImg from '../assets/products/special bread omlette.we
 import classicChickenBurgerImg from '../assets/products/classic chicken burger.webp'
 
 export const CATEGORIES = [
-  { id: 'all', label: 'All', emoji: '🍽️' },
-  { id: 'tea-coffee', label: 'Tea & Coffee', emoji: '🍵' },
-  { id: 'fresh-juices', label: 'Fresh Juices', emoji: '🍊' },
-  { id: 'bread-omelette', label: 'Bread Omelette', emoji: '🍳' },
-  { id: 'maggi', label: 'Maggi', emoji: '🍜' },
-  { id: 'french-fries', label: 'French Fries', emoji: '🍟' },
-  { id: 'momos', label: 'Momos', emoji: '🥟' },
-  { id: 'sandwiches', label: 'Sandwiches', emoji: '🥪' },
-  { id: 'burgers-snacks', label: 'Burgers & Snacks', emoji: '🍔' },
-  { id: 'fruit-salad', label: 'Fruit Salad', emoji: '🍎' },
-  { id: 'milkshakes', label: 'Milkshakes', emoji: '🥤' },
-  { id: 'milk-special', label: 'Milk & Special Drinks', emoji: '🥛' },
-  { id: 'mojitos', label: 'Mojitos', emoji: '🍹' },
+  { id: 'all', label: 'All' },
+  { id: 'tea-coffee', label: 'Tea & Coffee', img: teaImg },
+  { id: 'fresh-juices', label: 'Fresh Juices', img: orangeImg },
+  { id: 'bread-omelette', label: 'Bread Omelette', img: breadOmeletteImg },
+  { id: 'maggi', label: 'Maggi', img: plainMaggiImg },
+  { id: 'french-fries', label: 'French Fries', img: frenchFriesImg },
+  { id: 'momos', label: 'Momos', img: vegMomoImg },
+  { id: 'sandwiches', label: 'Sandwiches', img: vegSandwichImg },
+  { id: 'burgers-snacks', label: 'Burgers & Snacks', img: vegBurgerImg },
+  { id: 'fruit-salad', label: 'Fruit Salad', img: saladImg },
+  { id: 'milkshakes', label: 'Milkshakes', img: mangoMilkshakeImg },
+  { id: 'milk-special', label: 'Milk & Special Drinks', img: badamMilkImg },
+  { id: 'mojitos', label: 'Mojitos', img: strawberryMojitoImg },
 ]
 
 export const POPULAR_ITEMS = [

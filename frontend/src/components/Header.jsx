@@ -1,9 +1,8 @@
-import { Search } from 'lucide-react'
 import { SITE } from '../data/siteConfig'
 import juiceLandLogo from '../assets/products/juice-land-logo.webp'
 import logoImg from '../assets/logo.png'
 
-export default function Header({ onSearchClick, scrolled }) {
+export default function Header({ scrolled }) {
   return (
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="header__inner">
@@ -25,15 +24,6 @@ export default function Header({ onSearchClick, scrolled }) {
             <span className="header__tagline">{SITE.tagline}</span>
           </span>
         </a>
-        <button
-          type="button"
-          className="header__search-btn"
-          onClick={onSearchClick}
-          aria-label="Search the menu"
-          aria-controls="menu-search"
-        >
-          <Search size={22} strokeWidth={2.4} aria-hidden="true" />
-        </button>
       </div>
     </header>
   )

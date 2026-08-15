@@ -4,6 +4,41 @@
     font-size: 6.5px;
     letter-spacing: 0.07em;
   }
+
+  .hero__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 14px;
+    padding: 16px 16px 20px;
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .hero__eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero__title {
+    font-size: 25px;
+  }
+
+  .hero__subtitle {
+    font-size: 12.5px;
+  }
+
+  .hero__art {
+    width: 104px;
+    height: 104px;
+  }
 }
 
 /* ============ ≥ 480px ============ */
@@ -76,12 +111,12 @@
   }
 
   .hero__art {
-    width: 210px;
-    height: 210px;
+    width: 170px;
+    height: 170px;
   }
 
   .hero__title {
-    font-size: 42px;
+    font-size: 38px;
   }
 }
 
@@ -112,17 +147,17 @@
   }
 
   .hero__inner {
-    padding: 46px 24px 54px;
-    gap: 32px;
+    padding: 36px 24px 44px;
+    gap: 28px;
   }
 
   .hero__title {
-    font-size: 48px;
+    font-size: 42px;
   }
 
   .hero__art {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
 
   .popular__title {
@@ -170,11 +205,11 @@
   }
 
   .hero__title {
-    font-size: 52px;
+    font-size: 46px;
   }
 
   .hero__art {
-    width: 270px;
-    height: 270px;
+    width: 220px;
+    height: 220px;
   }
 }

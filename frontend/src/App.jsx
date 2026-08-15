@@ -33,30 +33,40 @@ export default function App() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8)
-      if (window.scrollY < 140) setActiveCat('all')
+      const cs = getComputedStyle(document.documentElement)
+      const stickyH =
+        (parseFloat(cs.getPropertyValue('--header-h')) || 0) +
+        (parseFloat(cs.getPropertyValue('--search-h')) || 0) +
+        (parseFloat(cs.getPropertyValue('--nav-h')) || 0) ||
+        212
+      const y = window.scrollY + stickyH + 4
+      let current = 'all'
+      for (const el of document.querySelectorAll('[data-category]')) {
+        if (el.getBoundingClientRect().top + window.scrollY <= y) {
+          current = el.dataset.category
+        }
+      }
+      setActiveCat((prev) => (prev === current ? prev : current))
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   useEffect(() => {
-    const sections = Array.from(
-      document.querySelectorAll('[data-category]'),
-    )
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveCat(entry.target.dataset.category)
-          }
-        })
-      },
-      { rootMargin: '-28% 0px -62% 0px' },
-    )
-    sections.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [isSearching])
+    const pill = document.querySelector(`.catnav__pill[data-cat="${activeCat}"]`)
+    const scroller = document.querySelector('.catnav__scroller')
+    if (pill && scroller) {
+      const pr = pill.getBoundingClientRect()
+      const sr = scroller.getBoundingClientRect()
+      const target = scroller.scrollLeft + (pr.left - sr.left) - sr.width / 2 + pr.width / 2
+      scroller.scrollTo({ left: Math.max(0, target), behavior: 'auto' })
+    }
+  }, [activeCat])
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -70,11 +80,6 @@ export default function App() {
     return getSuggestions(q, 6)
   }, [query])
 
-  const focusSearch = () => {
-    searchRef.current?.focus()
-    searchRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
-  }
-
   const handleQueryChange = (q) => {
     setQuery(q)
     if (!q.trim()) setFilters(DEFAULT_FILTERS)
@@ -82,20 +87,23 @@ export default function App() {
 
   const handleCategorySelect = (id) => {
     setActiveCat(id)
-    if (id === 'all') {
-      menuRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' })
-      return
-    }
-    document
-      .getElementById(`menu-${id}`)
-      ?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    const el = id === 'all' ? menuRef.current : document.getElementById(`menu-${id}`)
+    if (!el) return
+    const marginTop = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
+    const target = Math.max(0, el.getBoundingClientRect().top + window.scrollY - marginTop)
+    window.scrollTo({ top: target, behavior: 'smooth' })
+    window.setTimeout(() => {
+      if (Math.abs(window.scrollY - target) > 8) {
+        window.scrollTo(0, target)
+      }
+    }, 900)
   }
 
   const openItem = (item) => setSelected(item)
 
   return (
     <div className="app" id="top">
-      <Header onSearchClick={focusSearch} scrolled={scrolled} />
+      <Header scrolled={scrolled} />
       <SearchBar
         value={query}
         onChange={handleQueryChange}

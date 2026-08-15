@@ -50,7 +50,7 @@ export default function FilterBar({ filters, onChange, count }) {
               onClick={() => setFilter('category', cat.id)}
               aria-pressed={filters.category === cat.id}
             >
-              <span aria-hidden="true">{cat.emoji}</span>
+              <img className="filterbar__chip-img" src={cat.img} alt="" decoding="async" />
               {cat.label}
             </button>
           ))}

@@ -12,10 +12,9 @@ export default function CategoryNav({ active, onSelect }) {
             aria-selected={active === cat.id}
             className={`catnav__pill ${active === cat.id ? 'catnav__pill--active' : ''}`}
             onClick={() => onSelect(cat.id)}
+            data-cat={cat.id}
           >
-            <span className="catnav__emoji" aria-hidden="true">
-              {cat.emoji}
-            </span>
+            {cat.img && <img className="catnav__img" src={cat.img} alt="" decoding="async" />}
             {cat.label}
           </button>
         ))}

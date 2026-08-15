@@ -6,13 +6,15 @@ import { getCategoryLabel, formatPrice } from '../data/menuData'
 export default function SearchBar({ value, onChange, onClear, onPick, suggestions = [], inputRef }) {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(0)
+  const [prevValue, setPrevValue] = useState(value)
   const boxRef = useRef(null)
 
   const showSuggestions = open && value.trim().length > 0 && suggestions.length > 0
 
-  useEffect(() => {
+  if (prevValue !== value) {
+    setPrevValue(value)
     setActive(0)
-  }, [value])
+  }
 
   useEffect(() => {
     const onDocClick = (e) => {
