@@ -2,21 +2,21 @@
   "name": "JUICE LAND — Digital Menu",
   "short_name": "Juice Land",
   "description": "Fresh • Delicious • Refreshing — juices, snacks & drinks.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#fbf7ee",
   "theme_color": "#17130d",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "favicon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
