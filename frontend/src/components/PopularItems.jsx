@@ -30,7 +30,7 @@ export default function PopularItems({ onSelect }) {
                 alt={item.name}
                 width="120"
                 height="120"
-                loading="lazy"
+                fetchPriority="low"
                 decoding="async"
               />
               <VegBadge type={item.type} size="tiny" />

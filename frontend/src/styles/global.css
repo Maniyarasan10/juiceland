@@ -19,7 +19,7 @@
   --red: #e02e2e;
   --radius: 18px;
   --radius-lg: 24px;
-  --header-h: 88px;
+  --header-h: 96px;
   --search-h: 58px;
   --nav-h: 58px;
   --sticky-h: calc(var(--header-h) + var(--search-h) + var(--nav-h));

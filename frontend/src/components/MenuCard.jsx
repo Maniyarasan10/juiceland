@@ -18,7 +18,7 @@ export default function MenuCard({ item, index, onSelect }) {
           alt={item.name}
           width="320"
           height="240"
-          loading="lazy"
+          fetchPriority="low"
           decoding="async"
         />
         <VegBadge type={item.type} size="small" />

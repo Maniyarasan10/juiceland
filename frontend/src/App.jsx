@@ -8,11 +8,20 @@ import PopularItems from './components/PopularItems'
 import MenuSection from './components/MenuSection'
 import MenuCard from './components/MenuCard'
 import ProductModal from './components/ProductModal'
+import FilterBar from './components/FilterBar'
 import Footer from './components/Footer'
-import { CATEGORIES, MENU_ITEMS, getCategoryLabel } from './data/menuData'
+import { CATEGORIES, MENU_ITEMS } from './data/menuData'
+import {
+  DEFAULT_FILTERS,
+  getSuggestions,
+  isFiltering,
+  matchesFilters,
+  searchItems,
+} from './utils/search'
 
 export default function App() {
   const [query, setQuery] = useState('')
+  const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [activeCat, setActiveCat] = useState('all')
   const [selected, setSelected] = useState(null)
   const [scrolled, setScrolled] = useState(false)
@@ -52,17 +61,23 @@ export default function App() {
   const results = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return []
-    return MENU_ITEMS.filter(
-      (item) =>
-        item.name.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q) ||
-        getCategoryLabel(item.category).toLowerCase().includes(q),
-    )
+    return searchItems(q).filter((item) => matchesFilters(item, filters))
+  }, [query, filters])
+
+  const suggestions = useMemo(() => {
+    const q = query.trim()
+    if (!q) return []
+    return getSuggestions(q, 6)
   }, [query])
 
   const focusSearch = () => {
     searchRef.current?.focus()
     searchRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }
+
+  const handleQueryChange = (q) => {
+    setQuery(q)
+    if (!q.trim()) setFilters(DEFAULT_FILTERS)
   }
 
   const handleCategorySelect = (id) => {
@@ -83,8 +98,10 @@ export default function App() {
       <Header onSearchClick={focusSearch} scrolled={scrolled} />
       <SearchBar
         value={query}
-        onChange={setQuery}
-        onClear={() => setQuery('')}
+        onChange={handleQueryChange}
+        onClear={() => handleQueryChange('')}
+        onPick={openItem}
+        suggestions={suggestions}
         inputRef={searchRef}
       />
 
@@ -99,6 +116,7 @@ export default function App() {
                 {results.length} {results.length === 1 ? 'item' : 'items'} found
               </p>
             </div>
+            <FilterBar filters={filters} onChange={setFilters} count={results.length} />
             {results.length > 0 ? (
               <div className="searchresults__grid">
                 {results.map((item, i) => (
@@ -110,8 +128,19 @@ export default function App() {
                 <SearchX size={44} strokeWidth={1.6} aria-hidden="true" />
                 <p className="searchresults__empty-title">No items found</p>
                 <p className="searchresults__empty-sub">
-                  Try searching for something else.
+                  {isFiltering(filters)
+                    ? 'Try removing some filters or use different keywords.'
+                    : 'Try searching for something else.'}
                 </p>
+                {isFiltering(filters) && (
+                  <button
+                    type="button"
+                    className="searchresults__reset"
+                    onClick={() => setFilters(DEFAULT_FILTERS)}
+                  >
+                    Clear filters
+                  </button>
+                )}
               </div>
             )}
           </section>

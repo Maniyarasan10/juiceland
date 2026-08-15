@@ -305,3 +305,241 @@
   font-weight: 500;
   color: var(--muted);
 }
+
+.searchresults__reset {
+  margin-top: 18px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.searchresults__reset:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------- search suggestions ---------- */
+
+.searchsuggest {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  z-index: 70;
+  max-height: 340px;
+  overflow-y: auto;
+  animation: fade-up 0.18s ease both;
+}
+
+.searchsuggest__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+}
+
+.searchsuggest__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.searchsuggest__item:hover,
+.searchsuggest__item--active {
+  background: var(--cream-2);
+}
+
+.searchsuggest__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchsuggest__meta {
+  margin-left: auto;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+
+.searchsuggest__price {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--green);
+  background: var(--green-soft);
+  border-radius: 8px;
+  padding: 3px 8px;
+  flex: none;
+}
+
+/* ---------- filter bar ---------- */
+
+.filterbar {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  animation: fade-up 0.4s ease both;
+}
+
+.filterbar__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filterbar__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.filterbar__count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.filterbar__reset {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  padding: 5px 9px;
+  border-radius: 9px;
+  transition: background 0.15s ease;
+}
+
+.filterbar__reset:hover {
+  background: rgba(224, 46, 46, 0.08);
+}
+
+.filterbar__group {
+  padding: 9px 0;
+  border-top: 1px dashed var(--line);
+}
+
+.filterbar__group:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.filterbar__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-2);
+  margin-bottom: 8px;
+}
+
+.filterbar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterbar__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--cream);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.filterbar__chip:hover {
+  border-color: #d9cdab;
+  color: var(--ink);
+}
+
+.filterbar__chip--active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(23, 19, 13, 0.24);
+}
+
+.filterbar__chip--active.filterbar__chip--type {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.filterbar__chip--active.filterbar__chip--type:nth-child(3) {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.filterbar__chip svg {
+  flex: none;
+}
+
+@media (min-width: 720px) {
+  .filterbar {
+    padding: 16px 18px;
+  }
+
+  .filterbar__group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+  }
+
+  .filterbar__label {
+    width: 110px;
+    flex: none;
+    margin-bottom: 0;
+  }
+}

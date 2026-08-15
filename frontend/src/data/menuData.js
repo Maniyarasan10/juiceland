@@ -24,6 +24,7 @@ import muskmelonImg from '../assets/products/muskmelon.avif'
 import vanillaMilkshakeImg from '../assets/vanilla milkshake.webp'
 import avocadoImg from '../assets/avocado.webp'
 import badamMilkImg from '../assets/badam milk.webp'
+import badamMilkshakeImg from '../assets/badam milkshake.webp'
 import blueberryMojitoImg from '../assets/blueberry mojito.webp'
 import cheeseMaggiImg from '../assets/cheese_maggi_01.png'
 import chickenBurgerImg from '../assets/chicken burger.webp'
@@ -58,6 +59,32 @@ import frenchFriesImg from '../assets/french fries.webp'
 import chocolateMilkshakeImg from '../assets/chocolate milkshake.webp'
 import kitkatMilkshakeImg from '../assets/kitkat milkshake.webp'
 import oreoShakeImg from '../assets/oreo shake.webp'
+import pineappleJuiceImg from '../assets/pineapple.webp'
+import grapeJuiceImg from '../assets/grape.webp'
+import carrotJuiceImg from '../assets/carrot.webp'
+import beetrootJuiceImg from '../assets/beetroot.webp'
+import gooseberryJuiceImg from '../assets/gooseberry.webp'
+import cornNuggetsImg from '../assets/corn nuggets.webp'
+import cheeseBallsImg from '../assets/cheese ball.webp'
+import chickenCheeseBallsImg from '../assets/chicken cheese balls.webp'
+import vegNuggetsImg from '../assets/veg nuggets.webp'
+import greenAppleMojitoImg from '../assets/green apple.webp'
+import pineappleMojitoImg from '../assets/pineapple mojito.webp'
+import cornMomosImg from '../assets/products/corn momo.webp'
+import vegSandwichImg from '../assets/products/veg sandwitch.webp'
+import eggSandwichImg from '../assets/products/egg sandwitch.webp'
+import paneerSandwichImg from '../assets/products/panner sandwitch.webp'
+import chickenSandwichImg from '../assets/products/chicken sandwitch.webp'
+import watermelonMilkshakeImg from '../assets/products/watermelon milkshake.webp'
+import muskmelonMilkshakeImg from '../assets/products/muskmelom milkshake.webp'
+import papayaMilkshakeImg from '../assets/products/papaya.webp'
+import guavaMilkshakeImg from '../assets/products/guava.webp'
+import bananaMilkshakeImg from '../assets/redbanana.webp'
+import appleMilkshakeImg from '../assets/products/apple.webp'
+import chickenFriesImg from '../assets/products/chicken fries.webp'
+import chickenTikkaMomoImg from '../assets/products/chicken tika momo.webp'
+import specialBreadOmeletteImg from '../assets/products/special bread omlette.webp'
+import classicChickenBurgerImg from '../assets/products/classic chicken burger.webp'
 
 export const CATEGORIES = [
   { id: 'all', label: 'All', emoji: '🍽️' },
@@ -223,6 +250,51 @@ export const MENU_ITEMS = [
     image: muskmelonImg,
   },
   {
+    id: 'pineapple-juice',
+    name: 'Pineapple Juice',
+    category: 'fresh-juices',
+    price: 60,
+    type: 'veg',
+    description: 'Tropical pineapple juice, tangy-sweet and refreshing.',
+    image: pineappleJuiceImg,
+  },
+  {
+    id: 'grape-juice',
+    name: 'Grape Juice',
+    category: 'fresh-juices',
+    price: 60,
+    type: 'veg',
+    description: 'Deep, fruity grape juice packed with natural sweetness.',
+    image: grapeJuiceImg,
+  },
+  {
+    id: 'carrot-juice',
+    name: 'Carrot Juice',
+    category: 'fresh-juices',
+    price: 60,
+    type: 'veg',
+    description: 'Earthy, sweet carrot juice full of goodness.',
+    image: carrotJuiceImg,
+  },
+  {
+    id: 'beetroot-juice',
+    name: 'Beetroot Juice',
+    category: 'fresh-juices',
+    price: 60,
+    type: 'veg',
+    description: 'Vibrant beetroot juice, earthy and nourishing.',
+    image: beetrootJuiceImg,
+  },
+  {
+    id: 'gooseberry-juice',
+    name: 'Gooseberry Juice',
+    category: 'fresh-juices',
+    price: 60,
+    type: 'veg',
+    description: 'Tart amla juice, tangy and packed with vitamin C.',
+    image: gooseberryJuiceImg,
+  },
+  {
     id: 'chikoo-juice',
     name: 'Chikoo Juice',
     category: 'fresh-juices',
@@ -324,6 +396,15 @@ export const MENU_ITEMS = [
     image: chickenBreadOmeletteImg,
   },
   {
+    id: 'special-bread-omelette',
+    name: 'Special Bread Omelette',
+    category: 'bread-omelette',
+    price: 100,
+    type: 'nonveg',
+    description: 'Loaded omelette with chicken, cheese and veggies on toasted bread. Contains egg.',
+    image: specialBreadOmeletteImg,
+  },
+  {
     id: 'plain-maggi',
     name: 'Plain Maggi',
     category: 'maggi',
@@ -405,40 +486,67 @@ export const MENU_ITEMS = [
     image: masalaFriesImg,
   },
   {
+    id: 'chicken-fries',
+    name: 'Chicken Fries',
+    category: 'french-fries',
+    price: 110,
+    type: 'nonveg',
+    description: 'Crispy fries with juicy seasoned chicken.',
+    image: chickenFriesImg,
+  },
+  {
     id: 'veg-momos',
-    name: 'Veg Momos',
+    name: 'Fried Veg Momos',
     category: 'momos',
-    price: 80,
+    price: 70,
     type: 'veg',
-    description: 'Steamed dumplings with a juicy vegetable filling.',
+    description: 'Golden fried dumplings with a juicy vegetable filling.',
     image: vegMomoImg,
   },
   {
     id: 'chicken-momos',
-    name: 'Chicken Momos',
+    name: 'Fried Chicken Momos',
     category: 'momos',
-    price: 90,
+    price: 100,
     type: 'nonveg',
-    description: 'Steamed dumplings packed with spiced chicken.',
+    description: 'Crispy fried dumplings packed with spiced chicken.',
     image: chickenMomoImg,
   },
   {
     id: 'paneer-momos',
-    name: 'Paneer Momos',
+    name: 'Fried Paneer Momos',
     category: 'momos',
-    price: 90,
+    price: 80,
     type: 'veg',
-    description: 'Soft paneer and veggie dumplings, steamed to perfection.',
+    description: 'Soft paneer and veggie dumplings, golden fried.',
     image: paneerMomoImg,
   },
   {
     id: 'mushroom-momos',
-    name: 'Mushroom Momos',
+    name: 'Fried Mushroom Momos',
     category: 'momos',
-    price: 90,
+    price: 80,
     type: 'veg',
-    description: 'Earthy mushroom and vegetable dumplings.',
+    description: 'Earthy mushroom and vegetable dumplings, fried crisp.',
     image: mushroomMomoImg,
+  },
+  {
+    id: 'corn-momos',
+    name: 'Fried Corn Momos',
+    category: 'momos',
+    price: 80,
+    type: 'veg',
+    description: 'Sweet corn and veggie dumplings, golden fried.',
+    image: cornMomosImg,
+  },
+  {
+    id: 'chicken-tikka-momos',
+    name: 'Fried Chicken Tikka Momos',
+    category: 'momos',
+    price: 110,
+    type: 'nonveg',
+    description: 'Crispy fried momos stuffed with smoky chicken tikka.',
+    image: chickenTikkaMomoImg,
   },
   {
     id: 'veg-sandwich',
@@ -447,7 +555,7 @@ export const MENU_ITEMS = [
     price: 70,
     type: 'veg',
     description: 'Grilled sandwich stacked with fresh veggies and chutney.',
-    image: vegBurgerImg,
+    image: vegSandwichImg,
   },
   {
     id: 'egg-sandwich',
@@ -456,7 +564,7 @@ export const MENU_ITEMS = [
     price: 80,
     type: 'nonveg',
     description: 'Grilled sandwich with seasoned egg filling. Contains egg.',
-    image: eggMaggiImg,
+    image: eggSandwichImg,
   },
   {
     id: 'paneer-sandwich',
@@ -465,7 +573,7 @@ export const MENU_ITEMS = [
     price: 80,
     type: 'veg',
     description: 'Crispy grilled sandwich with spiced paneer filling.',
-    image: paneerMaggiImg,
+    image: paneerSandwichImg,
   },
   {
     id: 'chicken-sandwich',
@@ -474,7 +582,7 @@ export const MENU_ITEMS = [
     price: 90,
     type: 'nonveg',
     description: 'Toasted sandwich loaded with juicy chicken.',
-    image: chickenMaggiImg,
+    image: chickenSandwichImg,
   },
   {
     id: 'veg-burger',
@@ -493,6 +601,15 @@ export const MENU_ITEMS = [
     type: 'nonveg',
     description: 'Juicy chicken burger stacked with crisp lettuce and sauce.',
     image: chickenBurgerImg,
+  },
+  {
+    id: 'classic-chicken-burger',
+    name: 'Classic Chicken Burger',
+    category: 'burgers-snacks',
+    price: 120,
+    type: 'nonveg',
+    description: 'Classic crispy chicken burger with cheese and fresh toppings.',
+    image: classicChickenBurgerImg,
   },
   {
     id: 'chicken-nuggets',
@@ -520,6 +637,42 @@ export const MENU_ITEMS = [
     type: 'veg',
     description: 'Soft roll wrapped around spiced paneer and veggies.',
     image: paneerRollImg,
+  },
+  {
+    id: 'corn-nuggets',
+    name: 'Corn Nuggets',
+    category: 'burgers-snacks',
+    price: 100,
+    type: 'veg',
+    description: 'Golden, crispy corn nuggets with a sweet corn crunch.',
+    image: cornNuggetsImg,
+  },
+  {
+    id: 'cheese-balls',
+    name: 'Cheese Balls',
+    category: 'burgers-snacks',
+    price: 80,
+    type: 'veg',
+    description: 'Crunchy golden balls with a gooey melted cheese centre.',
+    image: cheeseBallsImg,
+  },
+  {
+    id: 'chicken-cheese-balls',
+    name: 'Chicken Cheese Balls',
+    category: 'burgers-snacks',
+    price: 110,
+    type: 'nonveg',
+    description: 'Crispy chicken balls with a molten cheese filling.',
+    image: chickenCheeseBallsImg,
+  },
+  {
+    id: 'veg-nuggets',
+    name: 'Veg Nuggets',
+    category: 'burgers-snacks',
+    price: 100,
+    type: 'veg',
+    description: 'Crunchy vegetable nuggets, golden fried and tasty.',
+    image: vegNuggetsImg,
   },
   {
     id: 'fruit-salad',
@@ -561,6 +714,7 @@ export const MENU_ITEMS = [
     addon: { label: 'Add Ice Cream', price: 10 },
     description: 'Decadent chocolate shake, thick, creamy and indulgent.',
     image: chocolateMilkshakeImg,
+    imagePosition: 'center 20%',
   },
   {
     id: 'oreo-milkshake',
@@ -571,6 +725,7 @@ export const MENU_ITEMS = [
     addon: { label: 'Add Ice Cream', price: 10 },
     description: 'Crunchy Oreo cookies blended into a creamy shake.',
     image: oreoShakeImg,
+    imagePosition: 'center 20%',
   },
   {
     id: 'kitkat-milkshake',
@@ -602,6 +757,88 @@ export const MENU_ITEMS = [
     addon: { label: 'Add Ice Cream', price: 10 },
     description: 'Nutty pistachio shake, subtly sweet and aromatic.',
     image: pistaMilkshakeImg,
+  },
+  {
+    id: 'watermelon-milkshake',
+    name: 'Watermelon Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Icy watermelon blended into a cool, creamy shake.',
+    image: watermelonMilkshakeImg,
+    imagePosition: 'center 20%',
+  },
+  {
+    id: 'muskmelon-milkshake',
+    name: 'Muskmelon Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Sweet muskmelon blended thick into a refreshing shake.',
+    image: muskmelonMilkshakeImg,
+  },
+  {
+    id: 'papaya-milkshake',
+    name: 'Papaya Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Creamy papaya shake, naturally sweet and smooth.',
+    image: papayaMilkshakeImg,
+    imagePosition: 'center 20%',
+  },
+  {
+    id: 'guava-milkshake',
+    name: 'Guava Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Tropical guava shake with a fragrant, fruity taste.',
+    image: guavaMilkshakeImg,
+  },
+  {
+    id: 'banana-milkshake',
+    name: 'Banana Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Classic banana shake, thick, creamy and comforting.',
+    image: bananaMilkshakeImg,
+  },
+  {
+    id: 'apple-milkshake',
+    name: 'Apple Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Crisp apple shake with a fresh, fruity sweetness.',
+    image: appleMilkshakeImg,
+  },
+  {
+    id: 'badam-milkshake',
+    name: 'Badam Milkshake',
+    category: 'milkshakes',
+    price: 80,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Creamy badam shake, rich with almond flavour.',
+    image: badamMilkshakeImg,
+  },
+  {
+    id: 'avocado-milkshake',
+    name: 'Avocado Milkshake',
+    category: 'milkshakes',
+    price: 110,
+    type: 'veg',
+    addon: { label: 'Add Ice Cream', price: 10 },
+    description: 'Silky avocado blended with milk into a rich shake.',
+    image: avocadoImg,
   },
   {
     id: 'milk',
@@ -677,6 +914,25 @@ export const MENU_ITEMS = [
     type: 'veg',
     description: 'Deep blueberry mojito, fruity and refreshingly fizzy.',
     image: blueberryMojitoImg,
+  },
+  {
+    id: 'green-apple-mojito',
+    name: 'Green Apple Mojito',
+    category: 'mojitos',
+    price: 90,
+    type: 'veg',
+    description: 'Crisp green apple mojito with a tangy, fizzy kick.',
+    image: greenAppleMojitoImg,
+    imagePosition: 'center 20%',
+  },
+  {
+    id: 'pineapple-mojito',
+    name: 'Pineapple Mojito',
+    category: 'mojitos',
+    price: 90,
+    type: 'veg',
+    description: 'Tropical pineapple mojito, sweet, minty and sparkling.',
+    image: pineappleMojitoImg,
   },
 ]
 
