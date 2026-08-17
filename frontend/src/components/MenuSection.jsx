@@ -1,8 +1,13 @@
-import { getCategoryLabel } from '../data/menuData'
+import { getCategoryLabel, CATEGORIES } from '../data/menuData'
 import MenuCard from './MenuCard'
+
+const CATEGORY_IMG = Object.fromEntries(
+  CATEGORIES.filter((c) => c.id !== 'all').map((c) => [c.id, c.img])
+)
 
 export default function MenuSection({ categoryId, items, sectionRef }) {
   const label = getCategoryLabel(categoryId)
+  const catImg = CATEGORY_IMG[categoryId]
   return (
     <section
       id={`menu-${categoryId}`}
@@ -14,7 +19,11 @@ export default function MenuSection({ categoryId, items, sectionRef }) {
       <div className="menusection__head">
         <h2 className="menusection__title" id={`menu-${categoryId}-title`}>
           <span className="menusection__badge" aria-hidden="true">
-            {CATEGORY_EMOJI[categoryId] || '·'}
+            {catImg ? (
+              <img className="menusection__badge-img" src={catImg} alt="" decoding="async" />
+            ) : (
+              '·'
+            )}
           </span>
           {label}
         </h2>
@@ -29,19 +38,4 @@ export default function MenuSection({ categoryId, items, sectionRef }) {
       </div>
     </section>
   )
-}
-
-const CATEGORY_EMOJI = {
-  'tea-coffee': '🍵',
-  'fresh-juices': '🍊',
-  'bread-omelette': '🍳',
-  maggi: '🍜',
-  'french-fries': '🍟',
-  momos: '🥟',
-  sandwiches: '🥪',
-  'burgers-snacks': '🍔',
-  'fruit-salad': '🍎',
-  milkshakes: '🥤',
-  'milk-special': '🥛',
-  mojitos: '🍹',
 }
