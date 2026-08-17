@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Search, X, SearchCheck, SlidersHorizontal } from 'lucide-react'
+import { Search, X, SearchCheck } from 'lucide-react'
 import VegBadge from './VegBadge'
 import { getCategoryLabel, formatPrice } from '../data/menuData'
 
-export default function SearchBar({ value, onChange, onClear, suggestions = [], inputRef, filterOpen, onFilterToggle }) {
+export default function SearchBar({ value, onChange, onClear, suggestions = [], inputRef }) {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(0)
   const [prevValue, setPrevValue] = useState(value)
@@ -41,8 +41,7 @@ export default function SearchBar({ value, onChange, onClear, suggestions = [], 
   }
 
   return (
-    <div className="searchbar" id="menu-search">
-      <div className="searchbar__inner" ref={boxRef}>
+    <div className="searchbar__inner" ref={boxRef}>
         <label className="searchbar__label" htmlFor="menu-search-input">
           <span className="sr-only">Search the Juice Land menu</span>
           <Search size={18} strokeWidth={2.4} className="searchbar__icon" aria-hidden="true" />
@@ -74,16 +73,6 @@ export default function SearchBar({ value, onChange, onClear, suggestions = [], 
             <X size={16} strokeWidth={2.6} aria-hidden="true" />
           </button>
         )}
-        <button
-          type="button"
-          className={`searchbar__filter ${filterOpen ? 'searchbar__filter--active' : ''}`}
-          onClick={onFilterToggle}
-          aria-label="Toggle filters"
-          aria-pressed={filterOpen}
-        >
-          <SlidersHorizontal size={18} strokeWidth={2.4} aria-hidden="true" />
-        </button>
-
         {showSuggestions && (
           <ul
             id="search-suggestions"
@@ -131,6 +120,5 @@ export default function SearchBar({ value, onChange, onClear, suggestions = [], 
           </ul>
         )}
       </div>
-    </div>
   )
 }

@@ -173,12 +173,17 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .searchbar__inner {
   position: relative;
   max-width: var(--maxw);
   margin: 0 auto;
+  flex: 1;
+  min-width: 0;
 }
 
 .searchbar__label {
@@ -196,7 +201,7 @@
   border-radius: 14px;
   border: 1.5px solid var(--line);
   background: var(--card);
-  padding: 0 82px 0 42px;
+  padding: 0 42px 0 42px;
   font: inherit;
   font-size: 14.5px;
   color: var(--ink);
@@ -238,14 +243,13 @@
   background: #e8ddc3;
 }
 
-.searchbar__filter {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
+/* ---------- filter toggle ---------- */
+
+.filter-toggle {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -255,23 +259,19 @@
   transition: all 0.2s ease;
 }
 
-.searchbar__filter:hover {
+.filter-toggle:hover {
   background: #e8ddc3;
   border-color: #d9cdab;
   color: var(--ink);
 }
 
-.searchbar__filter--active {
+.filter-toggle--active {
   background: var(--ink);
   border-color: var(--ink);
   color: #fff;
 }
 
-.searchbar__filter--active:hover {
+.filter-toggle--active:hover {
   background: var(--ink-2);
   color: #fff;
-}
-
-.searchbar__clear + .searchbar__filter {
-  right: 52px;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { SearchX } from 'lucide-react'
+import { SearchX, SlidersHorizontal } from 'lucide-react'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import Hero from './components/Hero'
@@ -100,15 +100,24 @@ export default function App() {
   return (
     <div className="app" id="top">
       <Header scrolled={scrolled} />
-      <SearchBar
-        value={query}
-        onChange={handleQueryChange}
-        onClear={() => handleQueryChange('')}
-        suggestions={suggestions}
-        inputRef={searchRef}
-        filterOpen={filterOpen}
-        onFilterToggle={() => setFilterOpen((v) => !v)}
-      />
+      <div className="searchbar" id="menu-search">
+        <SearchBar
+          value={query}
+          onChange={handleQueryChange}
+          onClear={() => handleQueryChange('')}
+          suggestions={suggestions}
+          inputRef={searchRef}
+        />
+        <button
+          type="button"
+          className={`filter-toggle ${filterOpen ? 'filter-toggle--active' : ''}`}
+          onClick={() => setFilterOpen((v) => !v)}
+          aria-label="Toggle filters"
+          aria-pressed={filterOpen}
+        >
+          <SlidersHorizontal size={18} strokeWidth={2.4} aria-hidden="true" />
+        </button>
+      </div>
       {filterOpen && (
         <FilterBar filters={filters} onChange={setFilters} count={isSearching ? results.length : null} />
       )}
