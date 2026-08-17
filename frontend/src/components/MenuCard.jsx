@@ -1,13 +1,11 @@
 import VegBadge from './VegBadge'
 import { formatPrice } from '../data/menuData'
 
-export default function MenuCard({ item, index, onSelect }) {
+export default function MenuCard({ item, index }) {
   return (
-    <button
-      type="button"
+    <div
       className="menucard"
       style={{ '--i': index % 12 }}
-      onClick={() => onSelect(item)}
       aria-label={`${item.name}, ${formatPrice(item.price)}`}
     >
       <span className={'menucard__imgwrap' + (item.imgZoom ? ' menucard__imgwrap--zoom' : '')}>
@@ -35,6 +33,6 @@ export default function MenuCard({ item, index, onSelect }) {
           )}
         </span>
       </span>
-    </button>
+    </div>
   )
 }

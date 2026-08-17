@@ -7,7 +7,6 @@ import CategoryNav from './components/CategoryNav'
 import PopularItems from './components/PopularItems'
 import MenuSection from './components/MenuSection'
 import MenuCard from './components/MenuCard'
-import ProductModal from './components/ProductModal'
 import FilterBar from './components/FilterBar'
 import Footer from './components/Footer'
 import { CATEGORIES, MENU_ITEMS } from './data/menuData'
@@ -23,8 +22,8 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [activeCat, setActiveCat] = useState('all')
-  const [selected, setSelected] = useState(null)
   const [scrolled, setScrolled] = useState(false)
+  const [filterOpen, setFilterOpen] = useState(false)
 
   const searchRef = useRef(null)
   const menuRef = useRef(null)
@@ -82,7 +81,6 @@ export default function App() {
 
   const handleQueryChange = (q) => {
     setQuery(q)
-    if (!q.trim()) setFilters(DEFAULT_FILTERS)
   }
 
   const handleCategorySelect = (id) => {
@@ -99,8 +97,6 @@ export default function App() {
     }, 900)
   }
 
-  const openItem = (item) => setSelected(item)
-
   return (
     <div className="app" id="top">
       <Header scrolled={scrolled} />
@@ -108,10 +104,14 @@ export default function App() {
         value={query}
         onChange={handleQueryChange}
         onClear={() => handleQueryChange('')}
-        onPick={openItem}
         suggestions={suggestions}
         inputRef={searchRef}
+        filterOpen={filterOpen}
+        onFilterToggle={() => setFilterOpen((v) => !v)}
       />
+      {filterOpen && (
+        <FilterBar filters={filters} onChange={setFilters} count={isSearching ? results.length : null} />
+      )}
 
       <main className="main">
         {isSearching ? (
@@ -124,11 +124,10 @@ export default function App() {
                 {results.length} {results.length === 1 ? 'item' : 'items'} found
               </p>
             </div>
-            <FilterBar filters={filters} onChange={setFilters} count={results.length} />
             {results.length > 0 ? (
               <div className="searchresults__grid">
                 {results.map((item, i) => (
-                  <MenuCard key={item.id} item={item} index={i} onSelect={openItem} />
+                  <MenuCard key={item.id} item={item} index={i} />
                 ))}
               </div>
             ) : (
@@ -156,7 +155,7 @@ export default function App() {
           <>
             <Hero />
             <div className="menu" ref={menuRef}>
-              <PopularItems onSelect={openItem} />
+              <PopularItems />
               <CategoryNav active={activeCat} onSelect={handleCategorySelect} />
               {CATEGORIES.slice(1).map((cat) => {
                 const items = MENU_ITEMS.filter(
@@ -168,7 +167,6 @@ export default function App() {
                     key={cat.id}
                     categoryId={cat.id}
                     items={items}
-                    onSelect={openItem}
                   />
                 )
               })}
@@ -178,7 +176,6 @@ export default function App() {
       </main>
 
       <Footer />
-      {selected && <ProductModal item={selected} onClose={() => setSelected(null)} />}
     </div>
   )
 }

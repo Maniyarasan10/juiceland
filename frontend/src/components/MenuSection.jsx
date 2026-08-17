@@ -1,7 +1,7 @@
 import { getCategoryLabel } from '../data/menuData'
 import MenuCard from './MenuCard'
 
-export default function MenuSection({ categoryId, items, onSelect, sectionRef }) {
+export default function MenuSection({ categoryId, items, sectionRef }) {
   const label = getCategoryLabel(categoryId)
   return (
     <section
@@ -24,7 +24,7 @@ export default function MenuSection({ categoryId, items, onSelect, sectionRef })
       </div>
       <div className="menusection__grid">
         {items.map((item, i) => (
-          <MenuCard key={item.id} item={item} index={i} onSelect={onSelect} />
+          <MenuCard key={item.id} item={item} index={i} />
         ))}
       </div>
     </section>

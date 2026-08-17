@@ -264,10 +264,6 @@
   box-shadow: var(--shadow-md);
 }
 
-.popular__card:active {
-  transform: scale(0.97);
-}
-
 .popular__imgwrap {
   position: relative;
   border-radius: 13px;

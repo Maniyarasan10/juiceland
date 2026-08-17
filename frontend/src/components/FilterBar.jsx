@@ -21,7 +21,11 @@ export default function FilterBar({ filters, onChange, count }) {
           Filters
         </span>
         <span className="filterbar__count" aria-live="polite">
-          {count} {count === 1 ? 'item' : 'items'}
+          {count != null && (
+            <>
+              {count} {count === 1 ? 'item' : 'items'}
+            </>
+          )}
         </span>
         {active && (
           <button type="button" className="filterbar__reset" onClick={reset}>

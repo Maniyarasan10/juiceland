@@ -2,7 +2,7 @@ import { Flame } from 'lucide-react'
 import { POPULAR_ITEMS, getItemById, formatPrice } from '../data/menuData'
 import VegBadge from './VegBadge'
 
-export default function PopularItems({ onSelect }) {
+export default function PopularItems() {
   const items = POPULAR_ITEMS.map((p) => getItemById(p.id)).filter(Boolean)
   if (items.length === 0) return null
   return (
@@ -15,12 +15,10 @@ export default function PopularItems({ onSelect }) {
       </div>
       <div className="popular__scroller">
         {items.map((item, i) => (
-          <button
+          <div
             key={item.id}
-            type="button"
             className="popular__card"
             style={{ '--i': i }}
-            onClick={() => onSelect(item)}
             aria-label={`${item.name}, ${formatPrice(item.price)}`}
           >
             <span className="popular__imgwrap">
@@ -39,7 +37,7 @@ export default function PopularItems({ onSelect }) {
               <span className="popular__name">{item.name}</span>
               <span className="popular__price">{formatPrice(item.price)}</span>
             </span>
-          </button>
+          </div>
         ))}
       </div>
     </section>

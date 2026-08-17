@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Search, X, SearchCheck } from 'lucide-react'
+import { Search, X, SearchCheck, SlidersHorizontal } from 'lucide-react'
 import VegBadge from './VegBadge'
 import { getCategoryLabel, formatPrice } from '../data/menuData'
 
-export default function SearchBar({ value, onChange, onClear, onPick, suggestions = [], inputRef }) {
+export default function SearchBar({ value, onChange, onClear, suggestions = [], inputRef, filterOpen, onFilterToggle }) {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(0)
   const [prevValue, setPrevValue] = useState(value)
@@ -24,11 +24,6 @@ export default function SearchBar({ value, onChange, onClear, onPick, suggestion
     return () => document.removeEventListener('mousedown', onDocClick)
   }, [])
 
-  const pick = (item) => {
-    onPick?.(item)
-    setOpen(false)
-  }
-
   const handleKeyDown = (e) => {
     if (!showSuggestions) return
     if (e.key === 'ArrowDown') {
@@ -39,7 +34,7 @@ export default function SearchBar({ value, onChange, onClear, onPick, suggestion
       setActive((i) => (i - 1 + suggestions.length) % suggestions.length)
     } else if (e.key === 'Enter') {
       e.preventDefault()
-      pick(suggestions[active])
+      setOpen(false)
     } else if (e.key === 'Escape') {
       setOpen(false)
     }
@@ -79,6 +74,15 @@ export default function SearchBar({ value, onChange, onClear, onPick, suggestion
             <X size={16} strokeWidth={2.6} aria-hidden="true" />
           </button>
         )}
+        <button
+          type="button"
+          className={`searchbar__filter ${filterOpen ? 'searchbar__filter--active' : ''}`}
+          onClick={onFilterToggle}
+          aria-label="Toggle filters"
+          aria-pressed={filterOpen}
+        >
+          <SlidersHorizontal size={18} strokeWidth={2.4} aria-hidden="true" />
+        </button>
 
         {showSuggestions && (
           <ul
@@ -98,14 +102,27 @@ export default function SearchBar({ value, onChange, onClear, onPick, suggestion
                   className={`searchsuggest__item ${i === active ? 'searchsuggest__item--active' : ''}`}
                   onMouseDown={(e) => {
                     e.preventDefault()
-                    pick(item)
+                    setOpen(false)
                   }}
                   onMouseEnter={() => setActive(i)}
                 >
-                  <VegBadge type={item.type} size="tiny" />
-                  <span className="searchsuggest__name">{item.name}</span>
-                  <span className="searchsuggest__meta">
-                    {getCategoryLabel(item.category)}
+                  <span className="searchsuggest__imgwrap">
+                    <img
+                      className="searchsuggest__img"
+                      src={item.image}
+                      alt={item.name}
+                      width="48"
+                      height="48"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <VegBadge type={item.type} size="tiny" />
+                  </span>
+                  <span className="searchsuggest__info">
+                    <span className="searchsuggest__name">{item.name}</span>
+                    <span className="searchsuggest__meta">
+                      {getCategoryLabel(item.category)}
+                    </span>
                   </span>
                   <span className="searchsuggest__price">{formatPrice(item.price)}</span>
                 </button>

@@ -22,6 +22,7 @@
   --radius-lg: 24px;
   --header-h: 96px;
   --search-h: 58px;
+  --filter-h: 0px;
   --nav-h: 58px;
   --sticky-h: calc(var(--header-h) + var(--search-h) + var(--nav-h));
   --shadow-sm:
