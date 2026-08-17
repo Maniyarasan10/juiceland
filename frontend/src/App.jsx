@@ -67,6 +67,11 @@ export default function App() {
     }
   }, [activeCat])
 
+  const filteredItems = useMemo(() => {
+    if (!filterOpen) return []
+    return MENU_ITEMS.filter((item) => matchesFilters(item, filters))
+  }, [filterOpen, filters])
+
   const results = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return []
@@ -157,6 +162,34 @@ export default function App() {
                     Clear filters
                   </button>
                 )}
+              </div>
+            )}
+          </section>
+        ) : filterOpen ? (
+          <section className="filterresults" aria-live="polite">
+            <div className="filterresults__head">
+              <p className="filterresults__count">
+                {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'} found
+              </p>
+            </div>
+            {filteredItems.length > 0 ? (
+              <div className="searchresults__grid">
+                {filteredItems.map((item, i) => (
+                  <MenuCard key={item.id} item={item} index={i} />
+                ))}
+              </div>
+            ) : (
+              <div className="searchresults__empty">
+                <SearchX size={44} strokeWidth={1.6} aria-hidden="true" />
+                <p className="searchresults__empty-title">No items match filters</p>
+                <p className="searchresults__empty-sub">Try adjusting your filters.</p>
+                <button
+                  type="button"
+                  className="searchresults__reset"
+                  onClick={() => setFilters(DEFAULT_FILTERS)}
+                >
+                  Clear filters
+                </button>
               </div>
             )}
           </section>
